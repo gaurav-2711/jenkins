@@ -19,7 +19,6 @@ public class JenkinsController {
 
     @PostMapping("/create")
     public DemoEntity create(@RequestBody DemoEntity demoEntity){
-        System.out.println("This is create methos");
         DemoEntity demo = jenkinsService.create(demoEntity);
         return demo;
     }
