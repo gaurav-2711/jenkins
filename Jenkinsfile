@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'master', url: 'https://github.com/renilpatel122/jenikins-dev.git'
+                git branch: 'master', url: 'https://github.com/gaurav-2711/jenkins'
             }
         }
         stage('Build with Maven') {
