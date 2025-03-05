@@ -23,7 +23,7 @@ pipeline {
                 docker stop staging-container || true
                 docker rm staging-container || true
                 docker build -t %IMAGE_NAME%:staging --build-arg PROFILE=staging .
-                docker run -d -p 8081:8081 --name staging-container %IMAGE_NAME%:staging
+                docker run -d -p 8081:8081 --name staging-container -e "SPRING_PROFILES_ACTIVE=staging" %IMAGE_NAME%:staging
                 '''
             }
         }
@@ -36,7 +36,7 @@ pipeline {
                 docker stop prod-container || true
                 docker rm prod-container || true
                 docker build -t %IMAGE_NAME%:prod --build-arg PROFILE=prod .
-                docker run -d -p 8082:8082 --name prod-container %IMAGE_NAME%:prod
+                docker run -d -p 8082:8082 --name prod-container -e "SPRING_PROFILES_ACTIVE=prod" %IMAGE_NAME%:prod
                 '''
             }
         }
